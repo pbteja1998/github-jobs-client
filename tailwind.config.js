@@ -45,14 +45,9 @@ module.exports = {
       minHeight: {
         card: '14.25rem',
       },
-      minWidth: {
-        card: '20.4375rem',
-      },
       spacing: {
-        12.5: '3.125rem',
         35: '8.75rem',
-        'card-width': '20.4375rem',
-        'card-height': '14.25rem',
+        76: '19rem',
       },
       borderRadius: {
         button: '0.3125rem',

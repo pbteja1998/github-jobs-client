@@ -4,7 +4,7 @@ import { Job } from '../types'
 export default function Home({ jobs }: { jobs: Job[] }) {
   return (
     <>
-      <div className='px-6 pt-20'>
+      <div className='grid grid-cols-1 px-6 pt-20 gap-x-3 xl:gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3'>
         {jobs.map((job: Job) => (
           <JobView key={job.id} job={job} />
         ))}

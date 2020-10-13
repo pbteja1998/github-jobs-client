@@ -36,7 +36,7 @@ export default function JobView({ job }: { job: Job }) {
   }
   return (
     <>
-      <div className='p-8 pt-0 mx-auto mt-12 bg-white rounded-md min-w-card min-h-card'>
+      <div className='p-8 pt-0 mx-auto bg-white rounded-md w-76 sm:w-full min-h-card'>
         <div
           className={classNames(
             'text-white font-brand font-bold absolute grid w-12 h-12 p-2 transform -translate-y-1/2 border place-items-center rounded-2xl',
