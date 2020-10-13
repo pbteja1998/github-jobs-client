@@ -45,7 +45,12 @@ module.exports = {
       minHeight: {
         card: '14.25rem',
       },
+      maxWidth: {
+        76: '19rem',
+      },
       spacing: {
+        3.5: '0.875rem',
+        34: '8.5rem',
         35: '8.75rem',
         76: '19rem',
       },

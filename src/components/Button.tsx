@@ -2,9 +2,11 @@ import { ReactNode } from 'react'
 import classNames from 'classnames'
 
 export default function Button({
+  className = '',
   children,
   primary = false,
 }: {
+  className?: string
   children: ReactNode
   primary?: boolean
 }) {
@@ -12,6 +14,7 @@ export default function Button({
     <>
       <button
         className={classNames(
+          className,
           'font-brand font-bold text-base leading-button h-12 w-35 bg-violet hover:bg-light-violet rounded-button',
           primary
             ? 'text-white'
