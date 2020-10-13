@@ -1,12 +1,25 @@
-import { Button } from '../components'
+import { Button, JobView } from '../components'
+import { Job } from '../types'
 
-export default function Home() {
+export default function Home({ jobs }: { jobs: Job[] }) {
   return (
     <>
-      <h1 className='text-2xl bg-green-100'>Hello World</h1>
-      <p className='text-primary ml-2.5'>Accent Color Text</p>
-      <Button>Button 1</Button>
-      <Button primary={true}>Button 1</Button>
+      <div className='px-6 pt-20'>
+        {jobs.map((job: Job) => (
+          <JobView key={job.id} job={job} />
+        ))}
+      </div>
+      <div className='mt-8 mb-16 text-center'>
+        <Button primary={true}>Load More</Button>
+      </div>
     </>
   )
+}
+
+export async function getServerSideProps() {
+  const res = await fetch(
+    `https://jobs.github.com/positions.json?page=2&search=code`
+  )
+  const data = await res.json()
+  return { props: { jobs: data } }
 }

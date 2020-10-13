@@ -3,3 +3,7 @@
 @tailwind components;
 
 @tailwind utilities;
+
+html {
+  background-color: #f2f2f2;
+}
