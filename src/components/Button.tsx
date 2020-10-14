@@ -23,7 +23,7 @@ export default function Button({
           'font-brand text-base font-bold leading-button h-12 bg-violet hover:bg-light-violet rounded-button',
           primary
             ? 'text-white'
-            : 'text-violet dark:text-white dark:bg-very-light-white bg-opacity-10 hover:bg-opacity-35',
+            : 'text-violet dark:text-white dark:bg-white dark:bg-opacity-10 bg-opacity-10 hover:bg-opacity-35',
           block ? 'w-full' : 'w-35'
         )}
         onClick={onClick}

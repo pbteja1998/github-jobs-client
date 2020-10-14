@@ -26,7 +26,6 @@ module.exports = {
         'dark-grey': '#6E8098',
         'normal-grey': '#f2f2f2',
         'checkbox-dark': 'rgba(255, 255, 255, 0.1)',
-        'very-light-white': 'rgba(255, 255, 255, 0.1)',
         logo: {
           1: '#DF6DAE',
           2: '#3DB3D1',
@@ -79,6 +78,8 @@ module.exports = {
       },
     },
   },
-  variants: {},
+  variants: {
+    backgroundOpacity: ['responsive', 'hover', 'focus', 'dark'],
+  },
   plugins: [require('@tailwindcss/ui')],
 }
