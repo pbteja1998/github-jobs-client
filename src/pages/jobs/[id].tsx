@@ -13,6 +13,7 @@ export default function DetailsPage() {
       `https://thingproxy.freeboard.io/fetch/https://jobs.github.com/positions/${jobId}.json`
     ).then((res) => res.json())
   )
+  console.log({ error })
   if (isLoading) return <JobDetailsViewSkeleton />
   if (error) return 'An error has occurred.'
   const job: Job = data

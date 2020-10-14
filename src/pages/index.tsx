@@ -8,6 +8,7 @@ export default function Home() {
       'https://thingproxy.freeboard.io/fetch/https://jobs.github.com/positions.json?page=1&search=code'
     ).then((res) => res.json())
   )
+  console.log({ error })
 
   if (error) return 'An error has occurred.'
   const jobs: Job[] = data
