@@ -10,8 +10,15 @@ export default function DetailsPage() {
   const jobId = router.query.id
   const { isLoading, error, data } = useQuery(`job-${jobId}-data`, () =>
     fetch(
-      `https://thingproxy.freeboard.io/fetch/https://jobs.github.com/positions/${jobId}.json`
-    ).then((res) => res.json())
+      `https://api.allorigins.win/get?url=${encodeURIComponent(
+        `https://thingproxy.freeboard.io/fetch/https://jobs.github.com/positions/${jobId}.json`
+      )}`
+    )
+      .then((response) => {
+        if (response.ok) return response.json()
+        throw new Error('Network response was not ok.')
+      })
+      .then((data) => JSON.parse(data.contents))
   )
   console.log({ error })
   if (isLoading) return <JobDetailsViewSkeleton />

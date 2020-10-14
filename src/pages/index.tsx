@@ -5,10 +5,17 @@ import { Job } from '../types'
 export default function Home() {
   const { isLoading, error, data } = useQuery('jobsData', () =>
     fetch(
-      'https://thingproxy.freeboard.io/fetch/https://jobs.github.com/positions.json?page=1&search=code'
-    ).then((res) => res.json())
+      `https://api.allorigins.win/get?url=${encodeURIComponent(
+        'https://jobs.github.com/positions.json?page=1&search=code'
+      )}`
+    )
+      .then((response) => {
+        if (response.ok) return response.json()
+        throw new Error('Network response was not ok.')
+      })
+      .then((data) => JSON.parse(data.contents))
   )
-  console.log({ error })
+  console.log({ error, data })
 
   if (error) return 'An error has occurred.'
   const jobs: Job[] = data
