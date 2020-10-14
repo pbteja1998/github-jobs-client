@@ -17,13 +17,14 @@ export default function Input({
   children?: ReactNode
 }) {
   return (
-    <div className={classNames('text-center', className)}>
+    <div className={'text-center'}>
       <label htmlFor={`${label}-id`} className='sr-only'>
         {label}
       </label>
       <div
         className={classNames(
-          'relative h-20 rounded-md shadow-sm w-full max-w-76 md:max-w-full inline-flex items-center bg-white'
+          'relative h-20 shadow-sm w-full max-w-76 md:max-w-full inline-flex items-center bg-white dark:bg-very-dark-blue',
+          className
         )}
       >
         {icon && (
@@ -38,8 +39,8 @@ export default function Input({
           className={classNames(
             '',
             isCheckbox
-              ? 'form-checkbox bg-very-dark-blue bg-opacity-10 ml-5 h-6 w-6 text-violet transition duration-150 ease-in-out'
-              : 'form-input block w-full h-full pl-16 leading-button sm:text-sm sm:leading-5'
+              ? 'border-0 form-checkbox bg-very-dark-blue bg-opacity-10 dark:bg-very-light-white dark:text-violet ml-5 h-6 w-6 text-violet dark:text-violet transition duration-150 ease-in-out'
+              : 'dark:text-white form-input border-0 block w-full h-full pl-16 leading-button sm:text-sm sm:leading-5 dark:bg-very-dark-blue'
           )}
           placeholder={placeholder}
         />

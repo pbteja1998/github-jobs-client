@@ -4,10 +4,9 @@ import { formatDate, getRandomColor } from '../../utils'
 import { Button } from '../../components'
 
 export default function DetailsPage({ job }: { job: Job }) {
-  console.log({ job })
   return (
     <>
-      <div className='w-11/12 mx-auto transform -translate-y-6 bg-white rounded-md md:hidden min-h-52'>
+      <div className='w-11/12 mx-auto transform -translate-y-6 bg-white rounded-md dark:bg-very-dark-blue md:hidden min-h-52'>
         <div
           className={classNames(
             'text-white font-brand font-bold mx-auto grid w-12 h-12 p-2 transform -translate-y-1/2 place-items-center rounded-2xl',
@@ -16,9 +15,9 @@ export default function DetailsPage({ job }: { job: Job }) {
         >
           {job.company[0]}
         </div>
-        <div className='text-center'>
+        <div className='px-6 text-center'>
           <div>
-            <h2 className='text-xl font-bold leading-6 text-very-dark-blue font-brand'>
+            <h2 className='text-xl font-bold leading-6 text-very-dark-blue dark:text-white font-brand'>
               {job.company}
             </h2>
             <p className='mt-3 text-base font-normal font-brand text-dark-grey leading-button'>
@@ -42,9 +41,9 @@ export default function DetailsPage({ job }: { job: Job }) {
         >
           <p className='text-6xl font-brand'>{job.company[0]}</p>
         </div>
-        <div className='flex justify-between px-10 py-10.5 bg-white flex-4'>
+        <div className='flex justify-between px-10 py-10.5 bg-white dark:bg-very-dark-blue flex-4'>
           <div className='font-brand'>
-            <h2 className='text-2xl font-bold leading-7 text-very-dark-blue'>
+            <h2 className='text-2xl font-bold leading-7 text-very-dark-blue dark:text-white'>
               {job.company}
             </h2>
             <p className='mt-3 font-normal text-normal leading-button text-dark-grey'>
@@ -58,7 +57,7 @@ export default function DetailsPage({ job }: { job: Job }) {
           </div>
         </div>
       </div>
-      <div className='w-11/12 px-6 py-10 mx-auto overflow-hidden bg-white rounded-md max-w-183'>
+      <div className='w-11/12 px-6 py-10 mx-auto overflow-hidden bg-white rounded-md dark:bg-very-dark-blue max-w-183'>
         <div className='flex flex-col md:items-center md:flex-row md:justify-between'>
           <div>
             <div className='flex items-center text-base font-normal font-brand leading-button text-dark-grey'>
@@ -68,7 +67,7 @@ export default function DetailsPage({ job }: { job: Job }) {
                 <p className='ml-3'>{job.type}</p>
               </div>
             </div>
-            <h2 className='mt-2 text-xl font-bold leading-6 font-brand text-very-dark-blue'>
+            <h2 className='mt-2 text-xl font-bold leading-6 font-brand text-very-dark-blue dark:text-white'>
               {job.title}
             </h2>
             <p className='mt-2 text-sm font-bold text-violet leading-1'>
@@ -84,7 +83,7 @@ export default function DetailsPage({ job }: { job: Job }) {
 
         <div>
           <article
-            className='mt-8 text-base font-normal leading-7 prose description font-brand text-dark-grey'
+            className='mt-8 text-base font-normal leading-7 prose description font-brand text-dark-grey dark:text-grey'
             dangerouslySetInnerHTML={{
               __html: job.description || '',
             }}
@@ -102,10 +101,10 @@ export default function DetailsPage({ job }: { job: Job }) {
           />
         </div>
       </div>
-      <div className='w-full h-24 p-6 mt-10 bg-white font-brand md:px-10'>
+      <div className='w-full h-24 p-6 mt-10 bg-white dark:bg-very-dark-blue font-brand md:px-10'>
         <div className='flex justify-between mx-auto max-w-183'>
           <div className='hidden md:block'>
-            <h2 className='text-xl font-bold leading-6 text-very-dark-blue'>
+            <h2 className='text-xl font-bold leading-6 text-very-dark-blue dark:text-white'>
               {job.title}
             </h2>
             <p className='mt-2 text-base font-normal leading-5 text-dark-grey'>

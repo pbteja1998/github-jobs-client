@@ -18,6 +18,7 @@ export default function Home({ jobs }: { jobs: Job[] }) {
           }
           label='Title Filter'
           placeholder='Filter by title...'
+          className='rounded-l-md'
         />
         <Input
           icon={
@@ -29,14 +30,18 @@ export default function Home({ jobs }: { jobs: Job[] }) {
               />
             </svg>
           }
-          className='hidden md:flex'
+          className='hidden border-l border-r border-dark-grey border-opacity-20 md:flex'
           label='Location Filter'
           placeholder='Filter by location...'
         />
 
-        <Input className='hidden md:flex' label='Full Time' isCheckbox={true}>
+        <Input
+          className='hidden md:flex rounded-r-md'
+          label='Full Time'
+          isCheckbox={true}
+        >
           <>
-            <p className='ml-4 text-base font-bold font-brand leading-button text-very-dark-blue'>
+            <p className='ml-4 text-base font-bold font-brand leading-button text-very-dark-blue dark:text-white'>
               Full Time
             </p>
             <Button primary={true} className='ml-7 mr-1.5'>
@@ -51,7 +56,7 @@ export default function Home({ jobs }: { jobs: Job[] }) {
           <JobView key={job.id} job={job} />
         ))}
       </div>
-      <div className='mt-8 mb-16 text-center'>
+      <div className='pb-16 mt-8 text-center'>
         <Button primary={true}>Load More</Button>
       </div>
     </>

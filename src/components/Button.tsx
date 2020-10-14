@@ -20,10 +20,10 @@ export default function Button({
       <button
         className={classNames(
           className,
-          'font-brand font-bold text-base leading-button h-12 bg-violet hover:bg-light-violet rounded-button',
+          'font-brand text-base font-bold leading-button h-12 bg-violet hover:bg-light-violet rounded-button',
           primary
             ? 'text-white'
-            : 'text-violet bg-opacity-10 hover:bg-opacity-35',
+            : 'text-violet dark:text-white dark:bg-very-light-white bg-opacity-10 hover:bg-opacity-35',
           block ? 'w-full' : 'w-35'
         )}
         onClick={onClick}

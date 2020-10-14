@@ -8,7 +8,7 @@ export default function JobView({ job }: { job: Job }) {
   return (
     <>
       <div
-        className='p-8 pt-0 mx-auto bg-white rounded-md cursor-pointer w-76 md:w-full min-h-card'
+        className='p-8 pt-0 mx-auto bg-white rounded-md cursor-pointer dark:bg-very-dark-blue w-76 md:w-full min-h-card'
         onClick={() => router.push(`/jobs/${job.id}`)}
       >
         <div
@@ -25,7 +25,7 @@ export default function JobView({ job }: { job: Job }) {
           <p className='ml-3'>{job.type}</p>
         </div>
         <div className='mt-3'>
-          <h2 className='text-lg font-bold leading-6 font-brand text-very-dark-blue'>
+          <h2 className='text-lg font-bold leading-6 font-brand text-very-dark-blue dark:text-white'>
             {job.title}
           </h2>
         </div>
