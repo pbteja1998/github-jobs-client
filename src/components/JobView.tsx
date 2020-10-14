@@ -1,11 +1,16 @@
 import classNames from 'classnames'
+import { useRouter } from 'next/router'
 import { Job } from '../types'
 import { formatDate, getRandomColor } from '../utils'
 
 export default function JobView({ job }: { job: Job }) {
+  const router = useRouter()
   return (
     <>
-      <div className='p-8 pt-0 mx-auto bg-white rounded-md w-76 md:w-full min-h-card'>
+      <div
+        className='p-8 pt-0 mx-auto bg-white rounded-md cursor-pointer w-76 md:w-full min-h-card'
+        onClick={() => router.push(`/jobs/${job.id}`)}
+      >
         <div
           className={classNames(
             'text-white font-brand font-bold absolute grid w-12 h-12 p-2 transform -translate-y-1/2 place-items-center rounded-2xl',
