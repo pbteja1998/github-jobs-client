@@ -68,7 +68,7 @@ export default function DetailsPage({ job }: { job: Job }) {
             </div>
           </div>
           <h2 className='mt-2 text-xl font-bold leading-6 font-brand text-very-dark-blue'>
-            {job.company}
+            {job.title}
           </h2>
           <p className='mt-2 text-sm font-bold text-violet leading-1'>
             {job.location}
