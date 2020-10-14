@@ -32,7 +32,7 @@ export default function DetailsPage({ job }: { job: Job }) {
           </Button>
         </div>
       </div>
-      <div className='hidden w-11/12 mx-auto overflow-hidden transform -translate-y-8 bg-white rounded-md md:flex min-h-35'>
+      <div className='hidden w-11/12 mx-auto overflow-hidden transform -translate-y-8 bg-white rounded-md md:flex min-h-35 max-w-183'>
         <div
           className={classNames(
             'grid place-items-center flex-1 text-white',
