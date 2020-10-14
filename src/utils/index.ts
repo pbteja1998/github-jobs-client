@@ -3,7 +3,7 @@
 export const formatDate = (date: Date) => '3h'
 
 export const getRandomColor = () => {
-  const number = Math.floor(Math.random() * 12 + 1)
+  const number = Math.floor(Math.random() * 11 + 1)
   switch (number) {
     case 1:
       return 'bg-logo-1'
