@@ -20,7 +20,7 @@ export default function DetailsPage() {
       })
       .then((data) => JSON.parse(data.contents))
   )
-  console.log({ error })
+
   if (isLoading) return <JobDetailsViewSkeleton />
   if (error) return 'An error has occurred.'
   const job: Job = data

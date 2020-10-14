@@ -15,7 +15,6 @@ export default function Home() {
       })
       .then((data) => JSON.parse(data.contents))
   )
-  console.log({ error, data })
 
   if (error) return 'An error has occurred.'
   const jobs: Job[] = data
