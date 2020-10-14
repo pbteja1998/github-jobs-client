@@ -7,3 +7,15 @@
 html {
   background-color: #f2f2f2;
 }
+
+.prose a {
+  @apply underline;
+}
+
+.description a {
+  @apply text-violet;
+}
+
+.how-to-apply a {
+  @apply text-white;
+}

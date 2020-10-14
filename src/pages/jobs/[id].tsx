@@ -81,7 +81,7 @@ export default function DetailsPage({ job }: { job: Job }) {
         </div>
         <div>
           <article
-            className='mt-8 text-base font-normal leading-7 prose font-brand text-dark-grey'
+            className='mt-8 text-base font-normal leading-7 prose description font-brand text-dark-grey'
             dangerouslySetInnerHTML={{
               __html: job.description || '',
             }}
@@ -92,7 +92,7 @@ export default function DetailsPage({ job }: { job: Job }) {
         <h2 className='text-xl font-bold'>How to Apply</h2>
         <div>
           <article
-            className='mt-6 text-base font-normal leading-7 prose text-white font-brand'
+            className='mt-6 text-base font-normal leading-7 prose text-white how-to-apply font-brand'
             dangerouslySetInnerHTML={{
               __html: job.how_to_apply || '',
             }}
