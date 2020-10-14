@@ -2,7 +2,6 @@ import { Button, JobView, Input } from '../components'
 import { Job } from '../types'
 
 export default function Home({ jobs }: { jobs: Job[] }) {
-  console.log({ jobs })
   return (
     <>
       <div className='grid justify-center max-w-full grid-cols-1 px-6 mx-auto transform -translate-y-1/2 md:grid-cols-3'>

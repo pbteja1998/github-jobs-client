@@ -6,6 +6,7 @@ import { Button } from '../../components'
 export default function DetailsPage({ job }: { job: Job }) {
   return (
     <>
+      {/* Mobile Hero Section */}
       <div className='w-11/12 mx-auto transform -translate-y-6 bg-white rounded-md dark:bg-very-dark-blue md:hidden min-h-52'>
         <div
           className={classNames(
@@ -32,6 +33,8 @@ export default function DetailsPage({ job }: { job: Job }) {
           </Button>
         </div>
       </div>
+
+      {/* Desktop Hero Section */}
       <div className='hidden w-11/12 mx-auto overflow-hidden transform -translate-y-8 bg-white rounded-md md:flex min-h-35 max-w-183'>
         <div
           className={classNames(
@@ -41,8 +44,8 @@ export default function DetailsPage({ job }: { job: Job }) {
         >
           <p className='text-6xl font-brand'>{job.company[0]}</p>
         </div>
-        <div className='flex justify-between px-10 py-10.5 bg-white dark:bg-very-dark-blue flex-4'>
-          <div className='font-brand'>
+        <div className='flex items-center justify-between px-10 py-10.5 bg-white dark:bg-very-dark-blue flex-4'>
+          <div className='pr-1.5 font-brand'>
             <h2 className='text-2xl font-bold leading-7 text-very-dark-blue dark:text-white'>
               {job.company}
             </h2>
@@ -122,7 +125,6 @@ export default function DetailsPage({ job }: { job: Job }) {
 }
 
 export async function getServerSideProps({ params }) {
-  console.log({ params })
   const res = await fetch(`https://jobs.github.com/positions/${params.id}.json`)
   const data = await res.json()
   return { props: { job: data } }
