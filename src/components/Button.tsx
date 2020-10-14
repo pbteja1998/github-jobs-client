@@ -5,10 +5,12 @@ export default function Button({
   className = '',
   children,
   primary = false,
+  onClick = () => {},
 }: {
   className?: string
   children: ReactNode
   primary?: boolean
+  onClick?: () => void
 }) {
   return (
     <>
@@ -20,6 +22,7 @@ export default function Button({
             ? 'text-white'
             : 'text-violet bg-opacity-10 hover:bg-opacity-35'
         )}
+        onClick={onClick}
       >
         {children}
       </button>

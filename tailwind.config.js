@@ -44,12 +44,15 @@ module.exports = {
       },
       minHeight: {
         card: '14.25rem',
+        52: '13rem',
+        35: '8.75rem',
       },
       maxWidth: {
         76: '19rem',
       },
       spacing: {
         3.5: '0.875rem',
+        10.5: '2.625rem',
         34: '8.5rem',
         35: '8.75rem',
         76: '19rem',
@@ -63,6 +66,9 @@ module.exports = {
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
         brand: ['Kumbh Sans', ...defaultTheme.fontFamily.sans],
+      },
+      flex: {
+        4: '4 4 0%',
       },
     },
   },
