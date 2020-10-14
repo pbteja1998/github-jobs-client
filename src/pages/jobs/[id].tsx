@@ -1,9 +1,10 @@
 import classNames from 'classnames'
 import { Job } from '../../types'
-import { getRandomColor } from '../../utils'
+import { formatDate, getRandomColor } from '../../utils'
 import { Button } from '../../components'
 
 export default function DetailsPage({ job }: { job: Job }) {
+  console.log({ job })
   return (
     <>
       <div className='w-11/12 mx-auto transform -translate-y-6 bg-white rounded-md md:hidden min-h-52'>
@@ -56,6 +57,52 @@ export default function DetailsPage({ job }: { job: Job }) {
             </Button>
           </div>
         </div>
+      </div>
+      <div className='w-11/12 px-6 py-10 mx-auto overflow-hidden bg-white rounded-md max-w-183'>
+        <div>
+          <div className='flex items-center text-base font-normal font-brand leading-button text-dark-grey'>
+            <p>{formatDate(new Date(job.created_at))} ago</p>
+            <div className='flex items-center ml-5'>
+              <p className='text-4xl'>&middot;</p>
+              <p className='ml-3'>{job.type}</p>
+            </div>
+          </div>
+          <h2 className='mt-2 text-xl font-bold leading-6 font-brand text-very-dark-blue'>
+            {job.company}
+          </h2>
+          <p className='mt-2 text-sm font-bold text-violet leading-1'>
+            {job.location}
+          </p>
+        </div>
+        <div>
+          <Button className='mt-8' primary={true} block={true}>
+            Apply Now
+          </Button>
+        </div>
+        <div>
+          <article
+            className='mt-8 text-base font-normal leading-7 prose font-brand text-dark-grey'
+            dangerouslySetInnerHTML={{
+              __html: job.description || '',
+            }}
+          />
+        </div>
+      </div>
+      <div className='w-11/12 px-8 pt-14.5 mx-auto mt-8 overflow-auto text-white rounded-md pb-15 font-brand bg-violet max-w-183'>
+        <h2 className='text-xl font-bold'>How to Apply</h2>
+        <div>
+          <article
+            className='mt-6 text-base font-normal leading-7 prose text-white font-brand'
+            dangerouslySetInnerHTML={{
+              __html: job.how_to_apply || '',
+            }}
+          />
+        </div>
+      </div>
+      <div className='w-full h-24 p-6 mt-10 bg-white'>
+        <Button primary={true} block={true}>
+          Apply Now
+        </Button>
       </div>
     </>
   )
