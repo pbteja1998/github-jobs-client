@@ -1,7 +1,17 @@
-import { Button, JobView, Input } from '../components'
+import { useQuery } from 'react-query'
+import { Button, JobView, Input, JobViewSkeleton } from '../components'
 import { Job } from '../types'
 
-export default function Home({ jobs }: { jobs: Job[] }) {
+export default function Home() {
+  const { isLoading, error, data } = useQuery('jobsData', () =>
+    fetch(
+      'https://thingproxy.freeboard.io/fetch/https://jobs.github.com/positions.json?page=1&search=code'
+    ).then((res) => res.json())
+  )
+
+  if (error) return 'An error has occurred.'
+  const jobs: Job[] = data
+
   return (
     <>
       <div className='grid justify-center max-w-full grid-cols-1 px-6 mx-auto transform -translate-y-1/2 md:grid-cols-3'>
@@ -73,21 +83,32 @@ export default function Home({ jobs }: { jobs: Job[] }) {
       </div>
 
       <div className='grid grid-cols-1 px-6 pt-4 gap-x-3 xl:gap-x-8 gap-y-16 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
-        {jobs.map((job: Job) => (
-          <JobView key={job.id} job={job} />
-        ))}
+        {isLoading ? (
+          <>
+            <JobViewSkeleton />
+            <JobViewSkeleton />
+            <JobViewSkeleton />
+            <JobViewSkeleton />
+            <JobViewSkeleton />
+            <JobViewSkeleton />
+          </>
+        ) : (
+          jobs.map((job: Job) => <JobView key={job.id} job={job} />)
+        )}
       </div>
       <div className='pb-16 mt-8 text-center'>
-        <Button primary={true}>Load More</Button>
+        <Button disabled={isLoading} primary={true}>
+          Load More
+        </Button>
       </div>
     </>
   )
 }
 
-export async function getServerSideProps() {
-  const res = await fetch(
-    `https://jobs.github.com/positions.json?page=2&search=code`
-  )
-  const data = await res.json()
-  return { props: { jobs: data } }
-}
+// export async function getServerSideProps() {
+//   const res = await fetch(
+//     `https://jobs.github.com/positions.json?page=2&search=code`
+//   )
+//   const data = await res.json()
+//   return { props: { jobs: data } }
+// }

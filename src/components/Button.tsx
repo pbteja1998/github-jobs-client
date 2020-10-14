@@ -3,14 +3,16 @@ import classNames from 'classnames'
 import JobView from './JobView'
 
 export default function Button({
+  disabled = false,
   className = '',
   children,
   primary = false,
   onClick = () => {},
   block = false,
 }: {
+  disabled?: boolean
   className?: string
-  children: ReactNode
+  children?: ReactNode
   primary?: boolean
   onClick?: () => void
   block?: boolean
@@ -18,6 +20,7 @@ export default function Button({
   return (
     <>
       <button
+        disabled={disabled}
         className={classNames(
           className,
           'font-brand text-base font-bold leading-button h-12 bg-violet hover:bg-light-violet rounded-button',

@@ -8,7 +8,7 @@ export default function JobView({ job }: { job: Job }) {
   return (
     <>
       <div
-        className='p-8 pt-0 mx-auto bg-white rounded-md cursor-pointer dark:bg-very-dark-blue w-76 md:w-full min-h-card'
+        className='p-8 pt-0 mx-auto bg-white rounded-md shadow cursor-pointer dark:bg-very-dark-blue w-76 md:w-full min-h-card'
         onClick={() => router.push(`/jobs/${job.id}`)}
       >
         <div

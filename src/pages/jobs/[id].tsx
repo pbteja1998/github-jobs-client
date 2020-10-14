@@ -1,9 +1,21 @@
 import classNames from 'classnames'
 import { Job } from '../../types'
 import { formatDate, getRandomColor } from '../../utils'
-import { Button } from '../../components'
+import { Button, JobDetailsViewSkeleton } from '../../components'
+import { useQuery } from 'react-query'
+import { useRouter } from 'next/router'
 
-export default function DetailsPage({ job }: { job: Job }) {
+export default function DetailsPage() {
+  const router = useRouter()
+  const jobId = router.query.id
+  const { isLoading, error, data } = useQuery(`job-${jobId}-data`, () =>
+    fetch(
+      `https://thingproxy.freeboard.io/fetch/https://jobs.github.com/positions/${jobId}.json`
+    ).then((res) => res.json())
+  )
+  if (isLoading) return <JobDetailsViewSkeleton />
+  if (error) return 'An error has occurred.'
+  const job: Job = data
   return (
     <>
       {/* Mobile Hero Section */}
@@ -124,8 +136,8 @@ export default function DetailsPage({ job }: { job: Job }) {
   )
 }
 
-export async function getServerSideProps({ params }) {
-  const res = await fetch(`https://jobs.github.com/positions/${params.id}.json`)
-  const data = await res.json()
-  return { props: { job: data } }
-}
+// export async function getServerSideProps({ params }) {
+//   const res = await fetch(`https://jobs.github.com/positions/${params.id}.json`)
+//   const data = await res.json()
+//   return { props: { job: data } }
+// }
