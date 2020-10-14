@@ -59,26 +59,29 @@ export default function DetailsPage({ job }: { job: Job }) {
         </div>
       </div>
       <div className='w-11/12 px-6 py-10 mx-auto overflow-hidden bg-white rounded-md max-w-183'>
-        <div>
-          <div className='flex items-center text-base font-normal font-brand leading-button text-dark-grey'>
-            <p>{formatDate(new Date(job.created_at))} ago</p>
-            <div className='flex items-center ml-5'>
-              <p className='text-4xl'>&middot;</p>
-              <p className='ml-3'>{job.type}</p>
+        <div className='flex flex-col md:items-center md:flex-row md:justify-between'>
+          <div>
+            <div className='flex items-center text-base font-normal font-brand leading-button text-dark-grey'>
+              <p>{formatDate(new Date(job.created_at))} ago</p>
+              <div className='flex items-center ml-5'>
+                <p className='text-4xl'>&middot;</p>
+                <p className='ml-3'>{job.type}</p>
+              </div>
             </div>
+            <h2 className='mt-2 text-xl font-bold leading-6 font-brand text-very-dark-blue'>
+              {job.title}
+            </h2>
+            <p className='mt-2 text-sm font-bold text-violet leading-1'>
+              {job.location}
+            </p>
           </div>
-          <h2 className='mt-2 text-xl font-bold leading-6 font-brand text-very-dark-blue'>
-            {job.title}
-          </h2>
-          <p className='mt-2 text-sm font-bold text-violet leading-1'>
-            {job.location}
-          </p>
+          <div>
+            <Button className='w-full mt-8 md:w-35' primary={true}>
+              Apply Now
+            </Button>
+          </div>
         </div>
-        <div>
-          <Button className='mt-8' primary={true} block={true}>
-            Apply Now
-          </Button>
-        </div>
+
         <div>
           <article
             className='mt-8 text-base font-normal leading-7 prose description font-brand text-dark-grey'
@@ -99,10 +102,21 @@ export default function DetailsPage({ job }: { job: Job }) {
           />
         </div>
       </div>
-      <div className='w-full h-24 p-6 mt-10 bg-white'>
-        <Button primary={true} block={true}>
-          Apply Now
-        </Button>
+      <div className='w-full h-24 p-6 mt-10 bg-white font-brand md:px-10'>
+        <div className='flex justify-between mx-auto max-w-183'>
+          <div className='hidden md:block'>
+            <h2 className='text-xl font-bold leading-6 text-very-dark-blue'>
+              {job.title}
+            </h2>
+            <p className='mt-2 text-base font-normal leading-5 text-dark-grey'>
+              {job.company}
+            </p>
+          </div>
+
+          <Button className='w-full md:w-35' primary={true}>
+            Apply Now
+          </Button>
+        </div>
       </div>
     </>
   )
