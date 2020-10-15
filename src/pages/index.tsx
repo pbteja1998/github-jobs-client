@@ -42,7 +42,7 @@ export default function Home() {
             </svg>
           }
           label='Title Filter'
-          placeholder='Filter by description...'
+          placeholder='Filter by text...'
           className='pr-4 rounded-l-md'
           value={description}
           setValue={setDescription}
@@ -99,7 +99,7 @@ export default function Home() {
             </p>
             <Button
               primary={true}
-              className='ml-7 mr-1.5'
+              className='ml-auto mr-2'
               onClick={() => {
                 setFinalDescription(description)
                 setFinalLocation(location)

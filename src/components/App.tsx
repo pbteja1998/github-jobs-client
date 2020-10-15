@@ -62,7 +62,7 @@ export default function App({ children }: { children: ReactNode }) {
           {children}
         </div>
       </div>
-      <ReactQueryDevtools initialIsOpen />
+      <ReactQueryDevtools />
     </>
   )
 }
