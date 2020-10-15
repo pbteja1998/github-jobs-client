@@ -43,7 +43,7 @@ export default function Home() {
           }
           label='Title Filter'
           placeholder='Filter by text...'
-          className='pr-4 rounded-l-md'
+          className='pr-4 rounded-l-md rounded-r-md md:rounded-r-none'
           value={description}
           setValue={setDescription}
         >
