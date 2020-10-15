@@ -1,23 +1,34 @@
-import { useQuery } from 'react-query'
+import { useEffect, useState } from 'react'
+import { useMutation } from 'react-query'
 import { Button, JobView, Input, JobViewSkeleton } from '../components'
 import { Job } from '../types'
 
 export default function Home() {
-  const { isLoading, error, data } = useQuery('jobsData', () =>
+  const [description, setDescription] = useState('')
+  const [location, setLocation] = useState('')
+  const [fullTime, setFullTime] = useState(false)
+
+  const [finalDescription, setFinalDescription] = useState('')
+  const [finalLocation, setFinalLocation] = useState('')
+  const [finalFullTime, setFinalFullTime] = useState(false)
+
+  const [mutate, { isLoading, error, data: jobs }] = useMutation(() =>
     fetch(
       `https://api.allorigins.win/get?url=${encodeURIComponent(
-        'https://jobs.github.com/positions.json?page=1&search=code'
+        `https://jobs.github.com/positions.json?page=1&description=${finalDescription}&location=${finalLocation}&full_time=${finalFullTime}`
       )}`
     )
-      .then((response) => {
-        if (response.ok) return response.json()
-        throw new Error('Network response was not ok.')
-      })
+      .then((res) => res.json())
       .then((data) => JSON.parse(data.contents))
   )
 
+  useEffect(() => {
+    mutate()
+  }, [finalDescription, finalLocation, finalFullTime])
+
   if (error) return 'An error has occurred.'
-  const jobs: Job[] = data
+
+  console.log({ isLoading, error, jobs })
 
   return (
     <>
@@ -33,8 +44,10 @@ export default function Home() {
             </svg>
           }
           label='Title Filter'
-          placeholder='Filter by title...'
+          placeholder='Filter by description...'
           className='pr-4 rounded-l-md'
+          value={description}
+          setValue={setDescription}
         >
           <div className='flex items-center md:hidden'>
             <div>
@@ -71,18 +84,30 @@ export default function Home() {
           className='hidden border-l border-r border-dark-grey border-opacity-20 md:flex'
           label='Location Filter'
           placeholder='Filter by location...'
+          value={location}
+          setValue={setLocation}
         />
 
         <Input
           className='hidden md:flex rounded-r-md'
           label='Full Time'
           isCheckbox={true}
+          checkboxValue={fullTime}
+          setCheckboxValue={setFullTime}
         >
           <>
             <p className='ml-4 text-base font-bold font-brand leading-button text-very-dark-blue dark:text-white'>
-              Full Time
+              Full Time Only
             </p>
-            <Button primary={true} className='ml-7 mr-1.5'>
+            <Button
+              primary={true}
+              className='ml-7 mr-1.5'
+              onClick={() => {
+                setFinalDescription(description)
+                setFinalLocation(location)
+                setFinalFullTime(fullTime)
+              }}
+            >
               Search
             </Button>
           </>
@@ -90,7 +115,7 @@ export default function Home() {
       </div>
 
       <div className='grid grid-cols-1 px-6 pt-4 gap-x-3 xl:gap-x-8 gap-y-16 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
-        {isLoading ? (
+        {isLoading || !jobs ? (
           <>
             <JobViewSkeleton />
             <JobViewSkeleton />
@@ -111,11 +136,3 @@ export default function Home() {
     </>
   )
 }
-
-// export async function getServerSideProps() {
-//   const res = await fetch(
-//     `https://jobs.github.com/positions.json?page=2&search=code`
-//   )
-//   const data = await res.json()
-//   return { props: { jobs: data } }
-// }

@@ -31,7 +31,7 @@ export default function DetailsPage() {
         <div
           className={classNames(
             'text-white font-brand font-bold mx-auto grid w-12 h-12 p-2 transform -translate-y-1/2 place-items-center rounded-2xl',
-            getRandomColor()
+            getRandomColor(job.company)
           )}
         >
           {job.company?.[0]}
@@ -60,7 +60,7 @@ export default function DetailsPage() {
         <div
           className={classNames(
             'grid place-items-center flex-1 text-white',
-            getRandomColor()
+            getRandomColor(job.company)
           )}
         >
           <p className='text-6xl font-brand'>{job.company[0]}</p>

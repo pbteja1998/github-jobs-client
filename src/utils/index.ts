@@ -2,8 +2,11 @@
 
 export const formatDate = (date: Date) => '3h'
 
-export const getRandomColor = () => {
-  const number = Math.floor(Math.random() * 10 + 1)
+export const getRandomColor = (company: string) => {
+  const initialCharCode = 'A'.charCodeAt(0)
+  const companyCharCode = company.toUpperCase().charCodeAt(0)
+  const diff = companyCharCode - initialCharCode
+  const number = diff / 3 + 1
   switch (number) {
     case 1:
       return 'bg-logo-1'
@@ -23,9 +26,7 @@ export const getRandomColor = () => {
       return 'bg-logo-8'
     case 9:
       return 'bg-logo-9'
-    case 10:
-      return 'bg-logo-10'
     default:
-      return 'bg-black'
+      return 'bg-logo-10'
   }
 }

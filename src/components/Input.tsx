@@ -7,14 +7,22 @@ export default function Input({
   placeholder = '',
   icon,
   isCheckbox = false,
+  checkboxValue = false,
   children,
+  value = '',
+  setValue = () => {},
+  setCheckboxValue = () => {},
 }: {
   className?: string
   label: string
   placeholder?: string
   icon?: ReactElement
   isCheckbox?: boolean
+  checkboxValue?: boolean
   children?: ReactNode
+  value?: string
+  setValue?: (val: string) => void
+  setCheckboxValue?: (val: boolean) => void
 }) {
   return (
     <div className={'text-center'}>
@@ -44,6 +52,13 @@ export default function Input({
             children && !isCheckbox && '-mr-20'
           )}
           placeholder={placeholder}
+          value={value}
+          checked={checkboxValue}
+          onChange={(e) => {
+            isCheckbox
+              ? setCheckboxValue(e.target.checked)
+              : setValue(e.target.value)
+          }}
         />
         {children}
       </div>
