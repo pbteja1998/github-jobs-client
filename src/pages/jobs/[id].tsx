@@ -34,7 +34,7 @@ export default function DetailsPage() {
             getRandomColor()
           )}
         >
-          {job.company[0]}
+          {job.company?.[0]}
         </div>
         <div className='px-6 text-center'>
           <div>
@@ -42,10 +42,11 @@ export default function DetailsPage() {
               {job.company}
             </h2>
             <p className='mt-3 text-base font-normal font-brand text-dark-grey leading-button'>
-              {job.company_url.split('/')[2]}
+              {job.company_url?.split('/')?.[2]}
             </p>
           </div>
           <Button
+            disabled={!job.company_url}
             className='mt-6'
             onClick={() => window.open(job.company_url, '_blank')}
           >
@@ -70,11 +71,14 @@ export default function DetailsPage() {
               {job.company}
             </h2>
             <p className='mt-3 font-normal text-normal leading-button text-dark-grey'>
-              {job.company_url.split('/')[2]}
+              {job.company_url?.split('/')?.[2]}
             </p>
           </div>
           <div>
-            <Button onClick={() => window.open(job.company_url, '_blank')}>
+            <Button
+              disabled={!job.company_url}
+              onClick={() => window.open(job.company_url, '_blank')}
+            >
               Company Site
             </Button>
           </div>

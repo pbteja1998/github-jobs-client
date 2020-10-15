@@ -40,7 +40,8 @@ export default function Input({
             'focus:shadow-none font-brand text-base',
             isCheckbox
               ? 'border-0 form-checkbox bg-very-dark-blue bg-opacity-10 dark:bg-white dark:bg-opacity-10 text-violet dark:text-violet ml-5 h-6 w-6 transition duration-150 ease-in-out'
-              : 'text-very-dark-blue dark:text-white form-input border-0 block w-full h-full pl-16 leading-button sm:text-sm sm:leading-5 dark:bg-very-dark-blue'
+              : 'text-very-dark-blue dark:text-white form-input border-0 block w-full h-full pl-16 leading-button sm:text-sm sm:leading-5 dark:bg-very-dark-blue',
+            children && !isCheckbox && '-mr-20'
           )}
           placeholder={placeholder}
         />

@@ -27,7 +27,8 @@ export default function Button({
           primary
             ? 'text-white'
             : 'text-violet dark:text-white dark:bg-white dark:bg-opacity-10 bg-opacity-10 hover:bg-opacity-35',
-          block ? 'w-full' : 'w-35'
+          block ? 'w-full' : 'w-35',
+          disabled && 'cursor-not-allowed opacity-50'
         )}
         onClick={onClick}
       >
