@@ -28,8 +28,6 @@ export default function Home() {
 
   if (error) return 'An error has occurred.'
 
-  console.log({ isLoading, error, jobs })
-
   return (
     <>
       <div className='grid justify-center max-w-full grid-cols-1 px-6 mx-auto transform -translate-y-1/2 md:grid-cols-3'>
