@@ -40,8 +40,8 @@ class MyDocument extends Document {
             content='A GitHub Jobs clone made using the design from frontendmentor.io.'
           />
           <meta property='twitter:url' content='https://jobs.bhanuteja.dev' />
-          <meta property='og:image' content='/preview.jpg' />
-          <meta property='twitter:image' content='/preview.jpg' />
+          <meta property='og:image' content='https://jobs.bhanuteja.dev/preview.jpg' />
+          <meta property='twitter:image' content='https://jobs.bhanuteja.dev/preview.jpg' />
           <link rel='shortcut icon' href='/favicon.ico' />
           <link
             href='https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap'
