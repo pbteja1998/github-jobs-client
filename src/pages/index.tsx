@@ -103,7 +103,7 @@ export default function Home() {
           setValue={setLocation}
         />
         <Input
-          className='flex pl-1 md:hidden rounded-r-md'
+          className='flex pl-1 md:hidden'
           label='Full Time'
           isCheckbox={true}
           checkboxValue={fullTime}
@@ -115,7 +115,7 @@ export default function Home() {
             </p>
           </>
         </Input>
-        <div className='px-6 pb-6'>
+        <div className='px-6 pb-6 dark:bg-very-dark-blue'>
           <Button
             primary={true}
             className='w-full cursor-pointer'
