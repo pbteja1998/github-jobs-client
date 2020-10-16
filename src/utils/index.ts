@@ -1,5 +1,3 @@
-
-
 export const formatDate = (date: Date) => '3h'
 
 export const getRandomColor = (company: string) => {

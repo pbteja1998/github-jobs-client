@@ -1,6 +1,5 @@
 import { ReactNode } from 'react'
 import classNames from 'classnames'
-import JobView from './JobView'
 
 export default function Button({
   disabled = false,

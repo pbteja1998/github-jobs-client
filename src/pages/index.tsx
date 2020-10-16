@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useMutation } from 'react-query'
 import { Button, JobView, Input, JobViewSkeleton, Modal } from '../components'
 import { Job } from '../types'
@@ -9,6 +9,8 @@ export default function Home() {
   const [description, setDescription] = useState('')
   const [location, setLocation] = useState('')
   const [fullTime, setFullTime] = useState(false)
+
+  const modalRef = useRef()
 
   const [final, setFinal] = useState({
     finalDescription: '',
@@ -61,9 +63,29 @@ export default function Home() {
 
   if (error) return 'An error has occurred.'
 
+  useEffect(() => {
+    function handler(event: MouseEvent) {
+      if (
+        !event.defaultPrevented &&
+        !(modalRef.current as any)?.contains(event.target)
+      ) {
+        if (modalOpen) {
+          setModalOpen(false)
+        }
+      }
+    }
+    window.addEventListener('click', handler)
+    return () => window.removeEventListener('click', handler)
+  }, [modalOpen, modalRef])
+
   return (
     <>
-      <Modal className='md:hidden' isOpen={modalOpen} setIsOpen={setModalOpen}>
+      <Modal
+        modalRef={modalRef}
+        className='md:hidden'
+        isOpen={modalOpen}
+        setIsOpen={setModalOpen}
+      >
         <Input
           icon={
             <svg width='17' height='24' xmlns='http://www.w3.org/2000/svg'>
@@ -112,6 +134,7 @@ export default function Home() {
           </Button>
         </div>
       </Modal>
+
       <div className='grid justify-center max-w-full grid-cols-1 px-6 mx-auto transform -translate-y-1/2 md:grid-cols-3'>
         <Input
           icon={
@@ -130,7 +153,13 @@ export default function Home() {
           setValue={setDescription}
         >
           <div className='flex items-center md:hidden'>
-            <div className='cursor-pointer' onClick={() => setModalOpen(true)}>
+            <div
+              className='cursor-pointer'
+              onClick={(e) => {
+                e.preventDefault()
+                setModalOpen(true)
+              }}
+            >
               <svg width='20' height='20' xmlns='http://www.w3.org/2000/svg'>
                 <path
                   className='fill-current text-dark-grey dark:text-white'
