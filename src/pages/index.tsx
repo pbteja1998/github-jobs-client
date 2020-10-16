@@ -30,6 +30,7 @@ export default function Home() {
   )
 
   useEffect(() => {
+    setJobs([])
     mutate().then((data) => {
       setJobs(data)
       setDescription('')
@@ -95,8 +96,10 @@ export default function Home() {
         <div className='px-6 pb-6'>
           <Button
             primary={true}
-            className='w-full'
+            className='w-full cursor-pointer'
             onClick={() => {
+              setLoadMoreDisabled(false)
+              setPage(1)
               setFinal({
                 finalDescription: description,
                 finalLocation: location,
@@ -127,7 +130,7 @@ export default function Home() {
           setValue={setDescription}
         >
           <div className='flex items-center md:hidden'>
-            <div onClick={() => setModalOpen(true)}>
+            <div className='cursor-pointer' onClick={() => setModalOpen(true)}>
               <svg width='20' height='20' xmlns='http://www.w3.org/2000/svg'>
                 <path
                   className='fill-current text-dark-grey dark:text-white'
@@ -138,8 +141,10 @@ export default function Home() {
               </svg>
             </div>
             <div
-              className='ml-6 inline-flex items-center justify-center w-12 h-12 p-3.5 bg-violet'
+              className='cursor-pointer ml-6 inline-flex items-center justify-center w-12 h-12 p-3.5 bg-violet'
               onClick={() => {
+                setLoadMoreDisabled(false)
+                setPage(1)
                 setFinal({
                   finalDescription: description,
                   finalLocation: location,
@@ -175,7 +180,7 @@ export default function Home() {
         />
 
         <Input
-          className='hidden md:flex rounded-r-md'
+          className='hidden cursor-auto md:flex rounded-r-md'
           label='Full Time'
           isCheckbox={true}
           checkboxValue={fullTime}
@@ -189,6 +194,8 @@ export default function Home() {
               primary={true}
               className='ml-auto mr-2'
               onClick={() => {
+                setLoadMoreDisabled(false)
+                setPage(1)
                 setFinal({
                   finalDescription: description,
                   finalLocation: location,
@@ -210,7 +217,11 @@ export default function Home() {
               type='button'
               className='flex-shrink-0 -mr-0.5 ml-1.5 inline-flex text-white focus:outline-none focus:text-white hover:text-opacity-75 focus:text-opacity-75'
               aria-label='Remove large badge'
-              onClick={() => setFinal({ ...final, finalDescription: '' })}
+              onClick={() => {
+                setLoadMoreDisabled(false)
+                setPage(1)
+                setFinal({ ...final, finalDescription: '' })
+              }}
             >
               <svg
                 className='w-2 h-2'
@@ -234,7 +245,11 @@ export default function Home() {
               type='button'
               className='flex-shrink-0 -mr-0.5 ml-1.5 inline-flex text-white focus:outline-none focus:text-white hover:text-opacity-75 focus:text-opacity-75'
               aria-label='Remove large badge'
-              onClick={() => setFinal({ ...final, finalLocation: '' })}
+              onClick={() => {
+                setLoadMoreDisabled(false)
+                setPage(1)
+                setFinal({ ...final, finalLocation: '' })
+              }}
             >
               <svg
                 className='w-2 h-2'
@@ -259,7 +274,11 @@ export default function Home() {
               type='button'
               className='flex-shrink-0 -mr-0.5 ml-1.5 inline-flex text-white focus:outline-none focus:text-white hover:text-opacity-75 focus:text-opacity-75'
               aria-label='Remove large badge'
-              onClick={() => setFinal({ ...final, finalFullTime: false })}
+              onClick={() => {
+                setLoadMoreDisabled(false)
+                setPage(1)
+                setFinal({ ...final, finalFullTime: false })
+              }}
             >
               <svg
                 className='w-2 h-2'
