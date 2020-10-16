@@ -341,7 +341,7 @@ export default function Home() {
           </>
         )}
       </div>
-      <div className='pb-16 mt-8 text-center'>
+      <div className='pb-16 mt-8 mb-20 text-center md:mb-10'>
         <Button
           disabled={isLoading || loadMoreDisabled}
           primary={true}
