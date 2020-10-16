@@ -128,7 +128,7 @@ export default function DetailsPage() {
           />
         </div>
       </div>
-      <div className='w-full h-24 p-6 mt-10 bg-white dark:bg-very-dark-blue font-brand md:px-10'>
+      <div className='w-full h-24 p-6 mt-10 mb-24 bg-white md:mb-16 dark:bg-very-dark-blue font-brand md:px-10'>
         <div className='flex justify-between mx-auto max-w-183'>
           <div className='hidden md:block'>
             <h2 className='text-xl font-bold leading-6 text-very-dark-blue dark:text-white'>
