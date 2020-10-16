@@ -1,10 +1,30 @@
 import classNames from 'classnames'
 import Link from 'next/link'
-import { ReactNode, useState } from 'react'
+import { ReactNode, useEffect, useState } from 'react'
 import { ReactQueryDevtools } from 'react-query-devtools'
 
 export default function App({ children }: { children: ReactNode }) {
-  const [darkMode, setDarkMode] = useState(false)
+  const [darkMode, setDarkModeState] = useState(false)
+  const MODE = 'githubJobsColorMode'
+
+  const setDarkMode = (value: boolean) => {
+    if (value) {
+      localStorage.setItem(MODE, 'dark')
+      setDarkModeState(true)
+    } else {
+      localStorage.setItem(MODE, 'light')
+      setDarkModeState(false)
+    }
+  }
+
+  useEffect(() => {
+    if (localStorage.getItem(MODE) === 'dark') {
+      setDarkMode(true)
+    } else {
+      setDarkMode(false)
+    }
+  }, [])
+
   return (
     <>
       <div className={classNames(darkMode && 'dark')}>
