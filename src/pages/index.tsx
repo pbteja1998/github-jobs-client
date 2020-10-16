@@ -61,8 +61,6 @@ export default function Home() {
     )
   }, [page])
 
-  if (error) return 'An error has occurred.'
-
   useEffect(() => {
     function handler(event: MouseEvent) {
       if (
@@ -77,6 +75,8 @@ export default function Home() {
     window.addEventListener('click', handler)
     return () => window.removeEventListener('click', handler)
   }, [modalOpen, modalRef])
+
+  if (error) return 'An error has occurred.'
 
   return (
     <>
@@ -341,7 +341,7 @@ export default function Home() {
           </>
         )}
       </div>
-      <div className='pb-16 mt-8 mb-20 text-center md:mb-10'>
+      <div className='mt-8 mb-20 text-center md:mb-10'>
         <Button
           disabled={isLoading || loadMoreDisabled}
           primary={true}

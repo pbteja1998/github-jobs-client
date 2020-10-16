@@ -28,7 +28,7 @@ export default function App({ children }: { children: ReactNode }) {
   return (
     <>
       <div className={classNames(darkMode && 'dark')}>
-        <div className={'bg-normal-grey dark:bg-midnight'}>
+        <div className={'bg-normal-grey dark:bg-midnight pb-12'}>
           <div className='flex items-baseline px-6 pt-8 h-34 bg-violet'>
             <Link href='/'>
               <svg
