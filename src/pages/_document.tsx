@@ -20,6 +20,11 @@ class MyDocument extends Document {
             href='https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap'
             rel='stylesheet'
           />
+          <script
+            src='https://cdn.usefathom.com/script.js'
+            data-site='ZMAOUWQD'
+            defer
+          ></script>
         </Head>
         <body>
           <Main />
