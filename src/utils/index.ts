@@ -1,4 +1,4 @@
-export const formatDate = (date: Date) => '3h'
+import { DateTime } from "luxon";
 
 export const getRandomColor = (company: string) => {
   const initialCharCode = 'A'.charCodeAt(0)
@@ -27,4 +27,41 @@ export const getRandomColor = (company: string) => {
     default:
       return 'bg-logo-10'
   }
+}
+
+export function formatDate(date: Date) {
+  const difference = DateTime.fromJSDate(date).diffNow().negate();
+  const years = Math.floor(difference.as("years"));
+  const months = Math.floor(difference.as("months"));
+  const weeks = Math.floor(difference.as("weeks"));
+  const days = Math.floor(difference.as("days"));
+  const hours = Math.floor(difference.as("hours"));
+  const minutes = Math.floor(difference.as("minutes"));
+  const seconds = Math.floor(difference.as("seconds"));
+  const AGO = "ago";
+  if (years > 0) {
+    return `${years}y ${AGO}`;
+  }
+
+  if (months > 0) {
+    return `${months}m ${AGO}`;
+  }
+
+  if (weeks > 0) {
+    return `${weeks}w ${AGO}`
+  }
+
+  if (days > 0) {
+    return `${days}d ${AGO}`;
+  }
+
+  if (hours > 0) {
+    return `${hours}h ${AGO}`;
+  }
+
+  if (minutes > 0) {
+    return `${minutes}m ${AGO}`;
+  }
+
+  return `${seconds}s ${AGO}`;
 }

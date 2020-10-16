@@ -88,7 +88,7 @@ export default function DetailsPage() {
         <div className='flex flex-col md:items-center md:flex-row md:justify-between'>
           <div>
             <div className='flex items-center text-base font-normal font-brand leading-button text-dark-grey'>
-              <p>{formatDate(new Date(job.created_at))} ago</p>
+              <p>{formatDate(new Date(job.created_at))}</p>
               <div className='flex items-center ml-5'>
                 <p className='text-4xl'>&middot;</p>
                 <p className='ml-3'>{job.type}</p>

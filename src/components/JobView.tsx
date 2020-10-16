@@ -17,7 +17,7 @@ export default function JobView({ job }: { job: Job }) {
             {job.company[0]}
           </div>
           <div className='flex items-center pt-12 text-base font-normal leading-5 text-dark-grey font-brand'>
-            <p>{formatDate(new Date(job.created_at))} ago</p>
+            <p>{formatDate(new Date(job.created_at))}</p>
             <p className='ml-6 text-4xl'>&middot;</p>
             <p className='ml-3'>{job.type}</p>
           </div>
