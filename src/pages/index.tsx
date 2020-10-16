@@ -15,11 +15,14 @@ export default function Home() {
     finalLocation: '',
     finalFullTime: false,
   })
+  const [page, setPage] = useState(1)
+  const [jobs, setJobs] = useState<Job[]>([])
+  const [loadMoreDisabled, setLoadMoreDisabled] = useState(false)
 
-  const [mutate, { isLoading, error, data: jobs }] = useMutation(() =>
+  const [mutate, { isLoading, error, data }] = useMutation(() =>
     fetch(
       `https://api.allorigins.win/get?url=${encodeURIComponent(
-        `https://jobs.github.com/positions.json?page=1&description=${final.finalDescription}&location=${final.finalLocation}&full_time=${final.finalFullTime}`
+        `https://jobs.github.com/positions.json?page=${page}&description=${final.finalDescription}&location=${final.finalLocation}&full_time=${final.finalFullTime}`
       )}`
     )
       .then((res) => res.json())
@@ -27,11 +30,33 @@ export default function Home() {
   )
 
   useEffect(() => {
-    mutate()
-    setDescription('')
-    setLocation('')
-    setFullTime(false)
+    mutate().then((data) => {
+      setJobs(data)
+      setDescription('')
+      setLocation('')
+      setFullTime(false)
+    })
   }, [final])
+
+  useEffect(() => {
+    mutate().then((data) =>
+      setJobs((prev: Job[]) => {
+        // [...prev, ...data] and remove duplicates
+        const allJobs = [...prev]
+        data.forEach((_job) => {
+          if (!allJobs.some((job) => job.id === _job.id)) {
+            allJobs.push(_job)
+          }
+        })
+        // if we do not get any more jobs even after increasing page
+        // disable load more button
+        if (page > 1 && prev.length === allJobs.length) {
+          setLoadMoreDisabled(true)
+        }
+        return allJobs
+      })
+    )
+  }, [page])
 
   if (error) return 'An error has occurred.'
 
@@ -254,7 +279,10 @@ export default function Home() {
       </div>
 
       <div className='grid grid-cols-1 px-6 pt-4 gap-x-3 xl:gap-x-8 gap-y-16 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
-        {isLoading || !jobs ? (
+        {jobs?.map((job: Job) => (
+          <JobView key={job.id} job={job} />
+        ))}
+        {isLoading && (
           <>
             <JobViewSkeleton />
             <JobViewSkeleton />
@@ -263,12 +291,14 @@ export default function Home() {
             <JobViewSkeleton />
             <JobViewSkeleton />
           </>
-        ) : (
-          jobs.map((job: Job) => <JobView key={job.id} job={job} />)
         )}
       </div>
       <div className='pb-16 mt-8 text-center'>
-        <Button disabled={isLoading} primary={true}>
+        <Button
+          disabled={isLoading || loadMoreDisabled}
+          primary={true}
+          onClick={() => setPage((page) => page + 1)}
+        >
           Load More
         </Button>
       </div>
