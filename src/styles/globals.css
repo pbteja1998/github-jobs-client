@@ -16,6 +16,10 @@
   @apply text-white;
 }
 
+.how-to-apply strong {
+  @apply text-white;
+}
+
 .dark .prose strong,
 .dark .prose h1,
 .dark .prose h2,

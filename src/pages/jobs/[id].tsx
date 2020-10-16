@@ -102,9 +102,11 @@ export default function DetailsPage() {
             </p>
           </div>
           <div>
-            <Button className='w-full mt-8 md:w-35' primary={true}>
-              Apply Now
-            </Button>
+            <a href='#how-to-apply'>
+              <Button className='w-full mt-8 md:w-35' primary={true}>
+                Apply Now
+              </Button>
+            </a>
           </div>
         </div>
 
@@ -117,7 +119,10 @@ export default function DetailsPage() {
           />
         </div>
       </div>
-      <div className='w-11/12 px-8 pt-14.5 mx-auto mt-8 overflow-auto text-white rounded-md pb-15 font-brand bg-violet max-w-183'>
+      <div
+        id='how-to-apply'
+        className='w-11/12 px-8 pt-14.5 mx-auto mb-24 md:mb-16 mt-8 overflow-auto text-white rounded-md pb-15 font-brand bg-violet max-w-183'
+      >
         <h2 className='text-xl font-bold'>How to Apply</h2>
         <div>
           <article
@@ -128,28 +133,6 @@ export default function DetailsPage() {
           />
         </div>
       </div>
-      <div className='w-full h-24 p-6 mt-10 mb-24 bg-white md:mb-16 dark:bg-very-dark-blue font-brand md:px-10'>
-        <div className='flex justify-between mx-auto max-w-183'>
-          <div className='hidden md:block'>
-            <h2 className='text-xl font-bold leading-6 text-very-dark-blue dark:text-white'>
-              {job.title}
-            </h2>
-            <p className='mt-2 text-base font-normal leading-5 text-dark-grey'>
-              {job.company}
-            </p>
-          </div>
-
-          <Button className='w-full md:w-35' primary={true}>
-            Apply Now
-          </Button>
-        </div>
-      </div>
     </>
   )
 }
-
-// export async function getServerSideProps({ params }) {
-//   const res = await fetch(`https://jobs.github.com/positions/${params.id}.json`)
-//   const data = await res.json()
-//   return { props: { job: data } }
-// }
