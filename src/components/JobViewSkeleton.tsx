@@ -1,6 +1,6 @@
 export default function JobViewSkeleton() {
   return (
-    <div className='p-8 pt-0 mx-auto bg-white rounded-md shadow cursor-pointer animate-pulse dark:bg-very-dark-blue w-76 md:w-full min-h-card'>
+    <div className='p-8 pt-0 mx-auto bg-white rounded-md shadow animate-pulse dark:bg-very-dark-blue w-76 md:w-full min-h-card'>
       <div
         className={
           'text-white font-brand font-bold absolute grid w-12 h-12 p-2 transform -translate-y-1/2 place-items-center rounded-2xl bg-gray-400'
