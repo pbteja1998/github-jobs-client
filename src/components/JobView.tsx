@@ -39,10 +39,10 @@ export default function JobView({ job }: { job: Job }) {
         <Link href={`/jobs/${job.id}`}>
           <div
             title='View Details'
-            className='absolute top-0 right-0 p-6 text-center cursor-pointer'
+            className='absolute top-0 right-0 flex p-6 space-x-2 text-center cursor-pointer hover:bg-gray-100'
           >
             <svg
-              className='w-6 h-6 fill-current text-violet'
+              className='w-5 h-5 fill-current text-violet'
               xmlns='http://www.w3.org/2000/svg'
               viewBox='0 0 20 20'
               fill='currentColor'
@@ -54,6 +54,9 @@ export default function JobView({ job }: { job: Job }) {
                 clipRule='evenodd'
               />
             </svg>
+            <span className='text-sm font-semibold tracking-wider uppercase'>
+              View Details
+            </span>
           </div>
         </Link>
       </div>
