@@ -39,7 +39,7 @@ export default function JobView({ job }: { job: Job }) {
         <Link href={`/jobs/${job.id}`}>
           <div
             title='View Details'
-            className='absolute top-0 right-0 flex p-6 space-x-2 text-center cursor-pointer hover:bg-gray-100'
+            className='absolute top-0 right-0 flex p-3 space-x-2 text-center cursor-pointer md:p-4 hover:bg-gray-100'
           >
             <svg
               className='w-5 h-5 fill-current text-violet'
