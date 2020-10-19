@@ -54,7 +54,7 @@ export default function JobView({ job }: { job: Job }) {
                 clipRule='evenodd'
               />
             </svg>
-            <span className='text-sm font-semibold tracking-wider uppercase'>
+            <span className='text-sm font-semibold tracking-wider uppercase text-violet'>
               View Details
             </span>
           </div>
